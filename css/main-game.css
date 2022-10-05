@@ -1,0 +1,29 @@
+#main {
+    height: 100vh;
+    background-image: url(../images/fondo-espacio.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+#main-box-game {
+    height: auto;
+}
+
+#game-grid {
+    height: 60vh;
+}
+
+.grid-row {
+    height: 20vh;
+}
+
+.grid-box{
+    border: 1px solid white;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+#info-box {
+    height: auto;
+}
+
