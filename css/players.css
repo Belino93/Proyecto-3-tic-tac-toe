@@ -1,0 +1,16 @@
+#main {
+    background-image: url(../images/fondo-espacio.jpg);
+    height: 100vh;
+}
+
+#main-box {
+    height: auto;
+}
+
+.main-box-options {
+    height: 30vh;
+}
+
+#main-box-separator {
+    height: 1vh;
+}
