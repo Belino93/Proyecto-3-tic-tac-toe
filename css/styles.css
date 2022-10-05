@@ -1,0 +1,28 @@
+#main {
+    background-image: url(../images/fondo-espacio.jpg);
+    background-size: cover;
+    height: 20vh;
+}
+
+.main-space {
+    height: 40vh;
+    background-image: url(../images/espacio.jpg);
+    background-size:contain;
+}
+
+#main-start-button {
+    width: 20vw;
+}
+
+#main-start-button:hover {
+    
+}
+
+#main-start-anchor{
+    text-decoration: none;
+    color: white;
+}
+
+#main-title {
+
+}
