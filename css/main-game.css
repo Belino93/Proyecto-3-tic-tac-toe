@@ -21,6 +21,8 @@
     border: 1px solid white;
     background-size: contain;
     background-repeat: no-repeat;
+    color: white;
+    font-size: 6em;
 }
 
 #info-box {
