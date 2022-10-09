@@ -4,6 +4,7 @@ class Jugador {
         this.nombre = nombre,
         this.tipo = tipo
         this.turno = false
+        
     }
     
     // Metodos
@@ -60,14 +61,40 @@ const InsertarFicha = () => {
     }
     console.log(tablero);
     ComprobarFilas();
+    ComprobarColumna();
+    ComprobarDiagonal()
 }
 
 const ComprobarFilas = () => {
     // Recorremos filas
     for(let x = 0; x < tablero.length; x++){
-        if(tablero[x][0],tablero[x][2] === tablero[x][1] && tablero[x][0],tablero[x][1],tablero[x][2] !== ''){
-            console.log('Has ganado!!')
+        if(((tablero[x][0] === tablero[x][2]) && (tablero[x][2] == tablero[x][1])) && 
+        (tablero[x][0] !== '') && (tablero[x][1] !== '') && (tablero[x][2] !== '')){
+            console.log('Has ganado!!');
+            //return
         }
     }
 }
 
+const ComprobarColumna = () => {
+    //Recorremos columnas
+    for (let y = 0; y < tablero.length; y++) {
+        if(((tablero[0][y] === tablero[1][y]) && (tablero[1][y] == tablero[2][y])) && 
+        ((tablero[0][y] !== '') && (tablero[1][y] !== '') && (tablero[2][y] !== ''))){
+            console.log('Has ganado!!');
+            //return
+        }
+    }
+}
+
+const ComprobarDiagonal = () => {
+    if(((tablero[0][0] === tablero[1][1]) && (tablero[1][1] === tablero[2][2])) && 
+    ((tablero[0][0] !== '') &&(tablero[1][1] !== '') && (tablero[2][2] !== ''))){
+        console.log('Has ganado!!');
+    }
+    if(((tablero[0][2] === tablero[1][1]) && (tablero[1][1] === tablero[2][0])) && 
+    ((tablero[0][2] !== '') &&(tablero[1][1] !== '') && (tablero[2][0] !== ''))){
+        
+        console.log('Has ganado!!');
+    }
+}
