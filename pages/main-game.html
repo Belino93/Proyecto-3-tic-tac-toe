@@ -25,28 +25,31 @@
                 <div class="col-12 d-grid p-0">
                     <div class="container d-flex flex-column" id="game-grid">
                         <div class="grid-row row grid-row justify-content-center">
-                            <div class="grid-box col-4 text-center" id="a1">X</div>
-                            <div class="grid-box col-4 text-center" id="a2">X</div>
-                            <div class="grid-box col-4 text-center" id="a3">O</div>
+                            <div class="grid-box col-4 text-center game-row" id="0" onclick="InsertarFicha(0,0)"></div>
+                            <div class="grid-box col-4 text-center game-row" id="1" onclick="InsertarFicha(0,1)"></div>
+                            <div class="grid-box col-4 text-center game-row" id="2" onclick="InsertarFicha(0,2)"></div>
                         </div>
                         <div class="grid-row row grid-row">
-                            <div class="grid-box col-4 text-center" id="b1">X</div>
-                            <div class="grid-box col-4 text-center" id="b2">O</div>
-                            <div class="grid-box col-4 text-center" id="b3">O</div>
+                            <div class="grid-box col-4 text-center game-row" id="3" onclick="InsertarFicha(1,0)"></div>
+                            <div class="grid-box col-4 text-center game-row" id="4" onclick="InsertarFicha(1,1)"></div>
+                            <div class="grid-box col-4 text-center game-row" id="5"
+                            onclick="InsertarFicha(1,2)"></div>
                         </div>
                         <div class="grid-row row grid-row">
-                            <div class="grid-box col-4 text-center" id="c1">X</div>
-                            <div class="grid-box col-4 text-center" id="c2">O</div>
-                            <div class="grid-box col-4 text-center" id="c3">X</div>
+                            <div class="grid-box col-4 text-center game-row" id="6" onclick="InsertarFicha(2,0)"></div>
+                            <div class="grid-box col-4 text-center game-row" id="7" onclick="InsertarFicha(2,1)"></div>
+                            <div class="grid-box col-4 text-center game-row" id="8" 
+                            onclick="InsertarFicha(2,2)"></div>
                         </div>
                     </div>
                 </div>
             </div>
             <!--Message box-->
             <div class="row bg-light text-center" id="info-box">
-                <div class="col">Turno del jugador 1</div>
+                <div class="col" id="text-screen">Turno del jugador 1</div>
             </div>
         </div>
     </div>
+    <script src="../js/main.js"></script>
 </body>
 </html>

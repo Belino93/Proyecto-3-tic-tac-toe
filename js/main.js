@@ -1,77 +1,64 @@
-class Jugador {
-
-    constructor(nombre, tipo){
-        this.nombre = nombre,
-        this.tipo = tipo
-        this.turno = false
-        
-    }
-    
-    // Metodos
-
-    jugarTurno(){
-
-    };
-    
-}
-// Creamos jugadores
-let jugador1 = new Jugador('Abel', 'J1');
-let jugador2 = new Jugador('Maquina', 'J2');
-
-jugador1.turno = true;
-console.log(jugador1.turno)
-
-
-
-/*
-
-
-
-*/
+//Recogemos objetos jugadores
+let jugador1 = JSON.parse(sessionStorage.getItem('datosP1'));
+let jugador2 = JSON.parse(sessionStorage.getItem('datosP2'));
+document.getElementById('text-screen').innerHTML = `Turno de ${jugador1.nombre}`;
 
 // Creamos tablero vacio
 let tablero = [];
-let fila1 = ['','',''];
-let fila2 = ['','',''];
-let fila3 = ['','',''];
+let fila1 = ['', '', ''];
+let fila2 = ['', '', ''];
+let fila3 = ['', '', ''];
 tablero.push(fila1, fila2, fila3);
 
+
 // Insertar una ficha
-
-console.log(tablero);
-
-const InsertarFicha = () => {
-    if(jugador1.turno === true){
-        let fila = parseInt(prompt('Indica la fila'));
-        let columna = parseInt(prompt('Indica la columna'));
-        if(tablero[fila - 1][columna - 1] == ""){
-            tablero[fila - 1][columna -1] = 'X';
+//Recogemos celdas, para crear evento y pintamos en la pantalla
+let celdas = Array.from(document.getElementsByClassName('game-row'))
+celdas.map((celda) => {
+    celda.addEventListener('click', () => {
+        if (jugador1.turno === true && celda.innerHTML == '') {
+            celda.innerHTML = jugador1.ficha
             jugador1.turno = false;
             jugador2.turno = true;
-        }
-
-    }else if(jugador2.turno === true){
-        fila = parseInt(prompt('Indica la fila'));
-        columna = parseInt(prompt('Indica la columna'));
-        if(tablero[fila - 1][columna - 1] == ""){
-            tablero[fila - 1][columna - 1] = 'O';
+            document.getElementById('text-screen').innerHTML = `Turno de ${jugador2.nombre}`;
+        } else if (jugador2.turno === true && celda.innerHTML == '') {
+            celda.innerHTML = jugador2.ficha
             jugador1.turno = true;
             jugador2.turno = false;
+            document.getElementById('text-screen').innerHTML = `Turno de ${jugador1.nombre}`;
+        }
+    })
+})
+// Insertar una ficha
+//Recogemos celdas, para crear evento y pintamos en el array
+const InsertarFicha = (fila, columna) => {
+    if (jugador1.turno === true) {
+        if (tablero[fila][columna] == "") {
+            tablero[fila][columna] = 'X';
+        }
+    }else if (jugador2.turno === true) {
+        if (tablero[fila][columna] == "") {
+            tablero[fila][columna] = 'O';
+
         }
     }
     console.log(tablero);
     ComprobarFilas();
     ComprobarColumna();
-    ComprobarDiagonal()
+    ComprobarDiagonal();
 }
 
 const ComprobarFilas = () => {
     // Recorremos filas
-    for(let x = 0; x < tablero.length; x++){
-        if(((tablero[x][0] === tablero[x][2]) && (tablero[x][2] == tablero[x][1])) && 
-        (tablero[x][0] !== '') && (tablero[x][1] !== '') && (tablero[x][2] !== '')){
-            console.log('Has ganado!!');
-            //return
+    for (let x = 0; x < tablero.length; x++) {
+        if (((tablero[x][0] === tablero[x][2]) && (tablero[x][2] == tablero[x][1])) &&
+            (tablero[x][0] !== '') && (tablero[x][1] !== '') && (tablero[x][2] !== '')) {
+            if (jugador1.ficha === tablero[x][0]) {
+                console.log(`Ha ganado el ${jugador1.tipo}!!`);
+                //return
+            } else {
+                console.log(`Ha ganado el ${jugador2.tipo}!!`);
+            }
         }
     }
 }
@@ -79,22 +66,36 @@ const ComprobarFilas = () => {
 const ComprobarColumna = () => {
     //Recorremos columnas
     for (let y = 0; y < tablero.length; y++) {
-        if(((tablero[0][y] === tablero[1][y]) && (tablero[1][y] == tablero[2][y])) && 
-        ((tablero[0][y] !== '') && (tablero[1][y] !== '') && (tablero[2][y] !== ''))){
-            console.log('Has ganado!!');
-            //return
+        if (((tablero[0][y] === tablero[1][y]) && (tablero[1][y] == tablero[2][y])) &&
+            ((tablero[0][y] !== '') && (tablero[1][y] !== '') && (tablero[2][y] !== ''))) {
+            if (jugador1.ficha === tablero[y][0]) {
+                console.log(`Ha ganado el ${jugador1.tipo}!!`);
+                //return
+            } else {
+                console.log(`Ha ganado el ${jugador2.tipo}!!`);
+            }
         }
     }
 }
 
 const ComprobarDiagonal = () => {
-    if(((tablero[0][0] === tablero[1][1]) && (tablero[1][1] === tablero[2][2])) && 
-    ((tablero[0][0] !== '') &&(tablero[1][1] !== '') && (tablero[2][2] !== ''))){
-        console.log('Has ganado!!');
+    if (((tablero[0][0] === tablero[1][1]) && (tablero[1][1] === tablero[2][2])) &&
+        ((tablero[0][0] !== '') && (tablero[1][1] !== '') && (tablero[2][2] !== ''))) {
+        if (jugador1.ficha === tablero[1][1]) {
+            console.log(`Ha ganado el ${jugador1.tipo}!!`);
+            //return
+        } else {
+            console.log(`Ha ganado el ${jugador2.tipo}!!`);
+        }
     }
-    if(((tablero[0][2] === tablero[1][1]) && (tablero[1][1] === tablero[2][0])) && 
-    ((tablero[0][2] !== '') &&(tablero[1][1] !== '') && (tablero[2][0] !== ''))){
-        
-        console.log('Has ganado!!');
+    if (((tablero[0][2] === tablero[1][1]) && (tablero[1][1] === tablero[2][0])) &&
+        ((tablero[0][2] !== '') && (tablero[1][1] !== '') && (tablero[2][0] !== ''))) {
+        if (jugador1.ficha === tablero[1][1]) {
+            console.log(`Ha ganado el ${jugador1.tipo}!!`);
+            //return
+        } else {
+            console.log(`Ha ganado el ${jugador2.tipo}!!`);
+        }
     }
 }
+
