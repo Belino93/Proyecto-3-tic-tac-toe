@@ -16,31 +16,32 @@ tablero.push(fila1, fila2, fila3);
 let celdas = Array.from(document.getElementsByClassName('game-row'))
 celdas.map((celda) => {
     celda.addEventListener('click', () => {
-        if (jugador1.turno === true && celda.innerHTML == '') {
+        // Jugador 1
+        if (jugador1.turno === true && celda.innerHTML == '' && (jugador1.nfichas > 0)) {
             celda.innerHTML = jugador1.ficha
             jugador1.turno = false;
             jugador2.turno = true;
             document.getElementById('text-screen').innerHTML = `Turno de ${jugador2.nombre}`;
-        } else if (jugador2.turno === true && celda.innerHTML == '') {
+            jugador1.nfichas --;
+        }
+        // Jugador 2
+        if (jugador2.turno === true && celda.innerHTML == '' && (jugador2.nfichas > 0)) {
             celda.innerHTML = jugador2.ficha
             jugador1.turno = true;
             jugador2.turno = false;
             document.getElementById('text-screen').innerHTML = `Turno de ${jugador1.nombre}`;
+            jugador2.nfichas --;
         }
     })
 })
 // Insertar una ficha
 //Recogemos celdas, para crear evento y pintamos en el array
 const InsertarFicha = (fila, columna) => {
-    if (jugador1.turno === true) {
-        if (tablero[fila][columna] == "") {
-            tablero[fila][columna] = 'X';
-        }
-    }else if (jugador2.turno === true) {
-        if (tablero[fila][columna] == "") {
-            tablero[fila][columna] = 'O';
-
-        }
+    if ((jugador1.turno === true) && (jugador1.nfichas > 0) && (tablero[fila][columna] == "")) {
+        tablero[fila][columna] = 'X';
+    }
+    if ((jugador2.turno === true) && (jugador2.nfichas > 0) && (tablero[fila][columna] == "")) {
+        tablero[fila][columna] = 'O';
     }
     console.log(tablero);
     ComprobarFilas();
@@ -98,4 +99,3 @@ const ComprobarDiagonal = () => {
         }
     }
 }
-
