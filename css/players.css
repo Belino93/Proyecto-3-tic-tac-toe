@@ -14,3 +14,16 @@
 #main-box-separator {
     height: 1vh;
 }
+
+svg {
+    border: 1px solid white;
+}
+
+a {
+    color: black;
+    text-decoration: none;
+}
+a:hover {
+    text-decoration: none;
+    color: black;
+}
