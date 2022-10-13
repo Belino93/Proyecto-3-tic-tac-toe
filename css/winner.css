@@ -1,0 +1,18 @@
+#main {
+    height: 100vh;
+    background-color: #2ef8a0;
+}
+#winner-box {
+    height: 50vh;
+    width: 60vw;
+    margin-top: 25vh;
+}
+
+.winner-row {
+    height: 20vh;
+}
+
+#winner-player {
+    font-size: 7vh;
+    font-weight: bold;
+}

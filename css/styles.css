@@ -1,26 +1,30 @@
 #main {
-    background-image: url(../images/fondo-espacio.jpg);
-    background-size: cover;
+    background-color: #2ef8a0;
     height: 20vh;
 }
 
 .main-space {
     height: 40vh;
-    background-image: url(../images/espacio.jpg);
-    background-size:contain;
+    background-color: #2ef8a0;
 }
 
 #main-start-button {
     width: 20vw;
+    margin: 0;
 }
 
 #main-start-button:hover {
-    
+    border: 1px solid black;
 }
 
 #main-start-anchor{
     text-decoration: none;
     color: white;
+}
+
+.start-button {
+    border: 1px solid #0aa461;
+    background-color: #0aa461;
 }
 
 #main-title {

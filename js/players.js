@@ -59,3 +59,4 @@ const validarDatos = () => {
         window.location.href = '../pages/main-game.html'
     }
 }
+

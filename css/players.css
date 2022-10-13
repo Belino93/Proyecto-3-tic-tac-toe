@@ -1,5 +1,5 @@
 #main {
-    background-image: url(../images/fondo-espacio.jpg);
+    background-color: #2ef8a0;
     height: 100vh;
 }
 
@@ -13,10 +13,14 @@
 
 #main-box-separator {
     height: 1vh;
+    background-color: #2ef8a0;
 }
 
-svg {
-    border: 1px solid white;
+.typeP1 {
+    margin-top: 2vh;
+}
+svg{
+    border: 1px solid black;
 }
 
 a {
