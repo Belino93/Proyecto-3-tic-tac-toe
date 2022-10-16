@@ -33,15 +33,16 @@ En caso de no usar una de las combinaciones de juego saltará un error como este
 
 Con los jugadores elegidos comenzamos la partida en la pantalla main.game.
 ![game](https://user-images.githubusercontent.com/90568424/196044571-965f749b-27e2-4826-b2bb-ad23b727e0e5.png)
-En el tenemos el tablero de juego y un cuadro de informacion con el turno correspondiente.
+En el tenemos el tablero de juego y un cuadro de información con el turno correspondiente.
 
-La partida transcurre con normalidad, hasta que cada jugador tiene puesta 6 fichas. En este momento, se elegira una ficha propia para cambiarla de posicion.
+La partida transcurre con normalidad, hasta que cada jugador tiene puesta 6 fichas. En este momento, se elegira una ficha propia para cambiarla de posición.
 ![game3](https://user-images.githubusercontent.com/90568424/196044846-b4dcb1d8-4afe-4e1e-ae72-6a90734a59d1.PNG)
 <hr>
 
-El primer jugador en conseguir que una fila, columna o diagonal contenga su ficha gana y se le redirecciona a la pagina de winner. Puedes volver a iniciar una nueva partida desde el boton.
+El primer jugador en conseguir que una fila, columna o diagonal contenga su ficha gana y se hace una redirección a la página de winner. Puedes volver a iniciar una nueva partida desde el botón.
 
 ![winner](https://user-images.githubusercontent.com/90568424/196045016-b1f805a5-7c9b-4d70-a091-3d882cd97477.png)
 
 
 Puedes visitar la página desde este link:
+
