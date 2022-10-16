@@ -1,8 +1,6 @@
 #main {
     height: 100vh;
-    background-image: url(../images/fondo-espacio.jpg);
-    background-size: cover;
-    background-repeat: no-repeat;
+    background-color: #2ef8a0;
 }
 
 #main-box-game {
@@ -18,12 +16,16 @@
 }
 
 .grid-box{
-    border: 1px solid white;
+    border: 1px solid black;
+    border-bottom: none;
     background-size: contain;
     background-repeat: no-repeat;
+    color: black;
+    font-size: 10vh;
 }
 
 #info-box {
     height: auto;
+    border: 1px solid black;
 }
 
