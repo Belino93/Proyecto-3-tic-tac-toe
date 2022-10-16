@@ -72,8 +72,6 @@ const InsertarFicha = (fila, columna) => {
         } else if ((jugador2.turno === true) && (jugador2.nfichas == 0) && (tablero[fila][columna] == "O") && (tablero[fila][columna] != 'X')) {
             tablero[fila][columna] = '';
         }
-
-        console.log(tablero);
         ComprobarFilas();
         ComprobarColumna();
         ComprobarDiagonal();
@@ -141,6 +139,7 @@ const ComprobarDiagonal = () => {
 
 // Player vs CPU
 
+
 if (player != undefined) {
     celdas.map((celda) => {
         celda.addEventListener('click', () => {
@@ -161,57 +160,53 @@ if (player != undefined) {
             ComprobarFilas();
             ComprobarColumna();
             ComprobarDiagonal();
-            setTimeout(movimientoCpu, 1000, cpu)
-            
-            
+            movimientoCpu(cpu)
+
+
         })
     })
-    // CPU
 }
 
 const movimientoCpu = (cpu) => {
-    let random = Math.floor(Math.random() * 9);
-    let celda = document.getElementById(`${random}`)
-    while(celda.innerHTML == player.ficha){
-        random = Math.floor(Math.random() * 9)
-        celda = document.getElementById(`${random}`)
-    }
-    celda = document.getElementById(`${random}`)
-
-    if((cpu.turno === true) && (celda.innerHTML == '') && (cpu.nfichas > 0)){
-        celda.innerHTML = cpu.ficha
-        fichaArray(random, cpu.ficha)
-        player.turno = true;
-        cpu.turno = false;
-        document.getElementById('text-screen').innerHTML = `Turno de ${player.nombre}`;
-        cpu.nfichas--;
-        turnos++
-    }else if(cpu.nfichas == 0 && cpu.turno == true){
-        while(celda.innerHTML != cpu.ficha){
-            random = Math.floor(Math.random() * 9)
+    setTimeout(() => {
+        do {
+            let random = Math.floor(Math.random() * 9);
+            let celda = document.getElementById(`${random}`)
+            while (celda.innerHTML == player.ficha) {
+                random = Math.floor(Math.random() * 9)
+                celda = document.getElementById(`${random}`)
+            }
             celda = document.getElementById(`${random}`)
-        }
-        console.log(random)
-        celda = document.getElementById(`${random}`)
-        if((cpu.turno === true) && (celda.innerHTML == cpu.ficha) && (cpu.nfichas == 0)){
-            celda.innerHTML = ''
-            fichaArray(random, '')
-            cpu.nfichas ++
-            
-        }
-        
-    }
-    // Logica a partir de turno 6
 
+            if ((cpu.turno === true) && (celda.innerHTML == '') && (cpu.nfichas > 0)) {
+                setTimeout(celda.innerHTML = cpu.ficha, 1500)
+                fichaArray(random, cpu.ficha)
+                player.turno = true;
+                cpu.turno = false;
+                document.getElementById('text-screen').innerHTML = `Turno de ${player.nombre}`;
+                cpu.nfichas--;
+                turnos++
+            } else if (cpu.nfichas == 0 && cpu.turno == true) {
+                while (celda.innerHTML != cpu.ficha) {
+                    random = Math.floor(Math.random() * 9)
+                    celda = document.getElementById(`${random}`)
+                }
+                celda = document.getElementById(`${random}`)
+                if ((cpu.turno === true) && (celda.innerHTML == cpu.ficha) && (cpu.nfichas == 0)) {
+                    celda.innerHTML = ''
+                    fichaArray(random, '')
+                    cpu.nfichas++ 
+                }
+            }
+        } while (cpu.turno == true);
+        ComprobarFilas();
+        ComprobarColumna();
+        ComprobarDiagonal();
+        return document.getElementById('text-screen').innerHTML = `Turno de ${player.nombre}`;
+    }, 1000)
 
-
-
-
-    ComprobarFilas();
-    ComprobarColumna();
-    ComprobarDiagonal();
-    return document.getElementById('text-screen').innerHTML = `Turno de ${player.nombre}`;
 }
+
 
 const fichaArray = (random, ficha) => {
     switch (random) {
@@ -242,9 +237,14 @@ const fichaArray = (random, ficha) => {
         case 8:
             tablero[2][2] = ficha
             break;
-    
+
         default:
             break;
     }
     console.log(tablero)
+}
+// Condicional 1er movimiento cpu
+if (cpu.tipo == 'CPU1') {
+    cpu.turno = true;
+    movimientoCpu(cpu)
 }

@@ -5,7 +5,7 @@
 
 #main-box {
     height: auto;
-    border: 1px solid black;
+    border: 3px solid black;
 }
 
 .main-box-options {
@@ -20,8 +20,14 @@
 .typeP1 {
     margin-top: 2vh;
 }
-svg{
+
+.type-box {
+    height: 13vh;
+}
+
+.type-box-click {
     border: 1px solid black;
+    height: 13vh;
 }
 
 a {
