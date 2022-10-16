@@ -45,4 +45,4 @@ El primer jugador en conseguir que una fila, columna o diagonal contenga su fich
 
 
 Puedes visitar la página desde este link:
-
+https://belino93.github.io/Proyecto-3-tic-tac-toe/
