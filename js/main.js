@@ -55,6 +55,18 @@ celdas.map((celda) => {
 
     })
 })
+
+// Boton elegir jugador
+document.getElementById('player-select-btn').addEventListener(('click'), () => {
+    sessionStorage.clear();
+    return window.location.href = '../pages/players.html';
+})
+
+// Boton reiniciar.
+document.getElementById('restart-game').addEventListener(('click'), () => {
+    return window.location.href = '../pages/main-game.html';
+})
+
 // Insertar una ficha
 //Recogemos celdas, para crear evento y pintamos en el array
 const InsertarFicha = (fila, columna) => {
@@ -138,8 +150,6 @@ const ComprobarDiagonal = () => {
 }
 
 // Player vs CPU
-
-
 if (player != undefined) {
     celdas.map((celda) => {
         celda.addEventListener('click', () => {
@@ -179,7 +189,7 @@ const movimientoCpu = (cpu) => {
             celda = document.getElementById(`${random}`)
 
             if ((cpu.turno === true) && (celda.innerHTML == '') && (cpu.nfichas > 0)) {
-                setTimeout(celda.innerHTML = cpu.ficha, 1500)
+                celda.innerHTML = cpu.ficha
                 fichaArray(random, cpu.ficha)
                 player.turno = true;
                 cpu.turno = false;
@@ -241,7 +251,6 @@ const fichaArray = (random, ficha) => {
         default:
             break;
     }
-    console.log(tablero)
 }
 // Condicional 1er movimiento cpu
 if (cpu.tipo == 'CPU1') {
