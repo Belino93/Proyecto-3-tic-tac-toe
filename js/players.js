@@ -2,7 +2,7 @@ class Jugador {
 
     constructor(nombre, tipo, ficha, nfichas) {
         this.nombre = nombre,
-            this.tipo = tipo
+        this.tipo = tipo
         this.turno = false
         this.ficha = ficha
         this.nfichas = nfichas
