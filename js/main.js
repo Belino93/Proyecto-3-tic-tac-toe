@@ -179,10 +179,11 @@ if (player != undefined) {
 
 const movimientoCpu = (cpu) => {
     setTimeout(() => {
+        let celdaBorrada = undefined
         do {
             let random = Math.floor(Math.random() * 9);
             let celda = document.getElementById(`${random}`)
-            while (celda.innerHTML == player.ficha) {
+            while ((celda.innerHTML == player.ficha) || (celdaBorrada == celda.id)) {
                 random = Math.floor(Math.random() * 9)
                 celda = document.getElementById(`${random}`)
             }
@@ -205,6 +206,7 @@ const movimientoCpu = (cpu) => {
                 if ((cpu.turno === true) && (celda.innerHTML == cpu.ficha) && (cpu.nfichas == 0)) {
                     celda.innerHTML = ''
                     fichaArray(random, '')
+                    celdaBorrada = celda.id
                     cpu.nfichas++ 
                 }
             }
