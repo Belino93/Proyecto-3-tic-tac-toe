@@ -150,33 +150,6 @@ const ComprobarDiagonal = () => {
 }
 
 // Player vs CPU
-if (player != undefined) {
-    celdas.map((celda) => {
-        celda.addEventListener('click', () => {
-            let nCelda = parseInt(celda.id)
-            if ((player.turno === true) && (celda.innerHTML == '') && (player.nfichas > 0)) {
-                celda.innerHTML = player.ficha
-                fichaArray(nCelda, player.ficha)
-                player.turno = false;
-                cpu.turno = true;
-                document.getElementById('text-screen').innerHTML = `Turno de ${cpu.nombre}`;
-                player.nfichas--;
-                turnos++
-            } else if ((player.turno === true) && (player.nfichas == 0) && (celda.innerHTML == player.ficha) && (celda.innerHTML != cpu.ficha)) {
-                celda.innerHTML = '';
-                fichaArray(nCelda, '')
-                player.nfichas++;
-            }
-            ComprobarFilas();
-            ComprobarColumna();
-            ComprobarDiagonal();
-            movimientoCpu(cpu)
-
-
-        })
-    })
-}
-
 const movimientoCpu = (cpu) => {
     setTimeout(() => {
         let celdaBorrada = undefined
@@ -218,7 +191,37 @@ const movimientoCpu = (cpu) => {
     }, 1000)
 
 }
+if (player != undefined) {
+    // Condicional 1er movimiento cpu
+    if (cpu.tipo == 'CPU1') {
+        cpu.turno = true;
+        movimientoCpu(cpu)
+    }
+    celdas.map((celda) => {
+        celda.addEventListener('click', () => {
+            let nCelda = parseInt(celda.id)
+            if ((player.turno === true) && (celda.innerHTML == '') && (player.nfichas > 0)) {
+                celda.innerHTML = player.ficha
+                fichaArray(nCelda, player.ficha)
+                player.turno = false;
+                cpu.turno = true;
+                document.getElementById('text-screen').innerHTML = `Turno de ${cpu.nombre}`;
+                player.nfichas--;
+                turnos++
+            } else if ((player.turno === true) && (player.nfichas == 0) && (celda.innerHTML == player.ficha) && (celda.innerHTML != cpu.ficha)) {
+                celda.innerHTML = '';
+                fichaArray(nCelda, '')
+                player.nfichas++;
+            }
+            ComprobarFilas();
+            ComprobarColumna();
+            ComprobarDiagonal();
+            movimientoCpu(cpu)
 
+
+        })
+    })
+}
 
 const fichaArray = (random, ficha) => {
     switch (random) {
@@ -254,8 +257,4 @@ const fichaArray = (random, ficha) => {
             break;
     }
 }
-// Condicional 1er movimiento cpu
-if (cpu.tipo == 'CPU1') {
-    cpu.turno = true;
-    movimientoCpu(cpu)
-}
+
