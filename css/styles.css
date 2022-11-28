@@ -1,11 +1,11 @@
 #main {
-    background-color: #2ef8a0;
+    background-color: antiquewhite;
     height: 20vh;
 }
 
 .main-space {
     height: 40vh;
-    background-color: #2ef8a0;
+    background-color: antiquewhite;
 }
 
 #main-start-button {
@@ -23,8 +23,8 @@
 }
 
 .start-button {
-    border: 1px solid #0aa461;
-    background-color: #0aa461;
+    border: 1px solid rgb(247, 222, 190);
+    background-color: rgb(247, 222, 190);
 }
 
 
